@@ -1,0 +1,44 @@
+<% include ./../../elements/linkref %>
+<% include ./../../elements/sidebar-wrapper %>
+<% include ./../../elements/header %>
+  <body class="dark-edition"> 
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="form"style="float:right;height: 100%;">
+                <form action="/erp/items/save" method="POST">
+                  <label for="fname">First name:</label>
+                  <input type="text" id="fname" name="name" value="<%=item.name  %>"><br><br>
+                  <label for="fname">Slug:</label>
+                  <input type="text" id="slug" name="slug" value="<%=item.slug  %>"><br><br>
+                  <label for="lname">Ordering:</label>
+                  <input type="text" id="Ordering" name="ordering" value="<%=item.ordering  %>"><br><br>
+                  <label for="slbox">Status</label>
+                  <select name="status" >
+                    <option value="novalue">Choose Status</option>
+                    <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
+                    <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
+                  </select>
+                  <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+              
+</div>
+
+
+
+</div>
+</div>
+</div>
+  </body>
+  <h3 style="float:right">
+  <% if(errors){ %>
+  
+                      <% errors.forEach((error)=>{ %>
+                        <li> <%= error.param %>: <%= error.msg %></li>
+                        <% })%>
+    <%}%>
+  </h3>
+<h3 style="display:none;"><%= JSON.stringify(item)  %></h3>
+<% include ./../../elements/script %> 

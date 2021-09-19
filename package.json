@@ -1,0 +1,22 @@
+{
+  "name": "project-nodejs",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Noah",
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-validator": "^5.1.2",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.13.5",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-slug-generator": "^1.0.4",
+    "mongoose-slug-updater": "^3.3.0",
+    "morgan": "~1.9.1"
+  }
+}

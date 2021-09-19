@@ -1,0 +1,17 @@
+<% 
+statusHelper = (collection, status,  id) =>  { 
+        let xhmlStatus = '';
+        let xhtmlLink = systemConfig.admin + '/' +collection+ '/change-status/' + id + '/' + status  ;
+      
+        if(status === "active") {
+          xhmlStatus = `<button type="button" class="btn btn-info">Active</button>`;
+            } else if (status === "inactive") {
+              xhmlStatus = `<button type="button" class="btn btn-warning">Inactive</button>`;
+             } 
+             return `<a href="${xhtmlLink}">${xhmlStatus}</a>`;
+} 
+%>
+
+
+
+

@@ -1,0 +1,12 @@
+<% filterstatusHelper = (statusFilter) =>  { %>
+    <% statusFilter.forEach((item)=> { %>
+                    
+        <a href="<%=systemConfig.admin%>/items/status/<%=item.value%>"><button type="button" class="<%= item.class %>"><%= item.name + " (" + item.count +")" %></button></a>
+    
+      <% }) %>    
+<% } %>
+
+
+
+
+

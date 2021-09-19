@@ -1,0 +1,4 @@
+- Lỗi css status
+- lỗi không change được status
+- lỗi form 
+- lỗi không thể update
