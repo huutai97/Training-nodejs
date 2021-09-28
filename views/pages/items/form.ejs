@@ -4,7 +4,7 @@
   <body class="dark-edition"> 
   <div class="container-fluid">
       <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-8">
               <div class="form"style="float:right;height: 100%;">
                 <form action="/erp/items/save" method="POST">
                   <label for="fname">First name:</label>
@@ -19,6 +19,9 @@
                     <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
                     <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
                   </select>
+                
+                  <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
+                  <script>CKEDITOR.replace( 'editor' );</script>
                   <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

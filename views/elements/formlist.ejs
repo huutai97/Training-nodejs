@@ -1,3 +1,6 @@
+<% 
+const collection = 'items';
+%>
 <body class="dark-edition"> 
     <base href="/">
     <div class="main-panel">
@@ -69,7 +72,7 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title ">List items</h4>
                   <% include ./../helper/filter %>
-                  <% filterstatusHelper(statusFilter) %>
+                  <%- filterstatusHelper(collection,statusFilter,search) %>
 
                   <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="float:right">Add New Items</a>
                   
@@ -93,6 +96,12 @@
                         </th>
                         <th>
                           Action
+                        </th>
+                        <th>
+                          Who
+                        </th>
+                        <th>
+                          Modified
                         </th>
                       </thead>
                       <tbody>
@@ -118,6 +127,14 @@
                              <a href="<%= systemConfig.admin %>/items/form/<%=item.slug%>" type="button" class="btn btn-info">Edit</a>
                              </a>
                             </td>
+                            <td>
+                             <%= item.crated.user_name %><br>
+                             <%= moment(item.crated.time).format(systemConfig.formatTime)  %>
+                             </td>
+                             <td>
+                              <%= item.modified.user_name %><br>
+                              <%= moment(item.modified.time).format(systemConfig.formatTime)  %>
+                              </td>
                           </tr>
                   <% })%> 
                       </tbody>
@@ -126,7 +143,7 @@
                 </div>
                 
                 <% include ./../helper/pagination %>
-                <%=paginationHelper(paginaTion, currentStatus, search) %>
+                <%=paginationHelper(paginaTion,collection,currentStatus, search) %>
                
               </div>
             </div>
@@ -137,15 +154,14 @@
 
       <div class="container demo">
        
-        <div class="modal left fade" id="exampleModal" tabindex="" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-body">
+                    <div class="modal-body"></div>
                         <div class="nav flex-sm-column flex-row">
                           <form action="/erp/items/save" method="POST">
                             <label for="fname">First name:</label>
                             <input type="text" id="fname" name="name" value="<%=item.name  %>"><br><br>
-                          
                             <label for="lname">Ordering:</label>
                             <input type="text" id="lname" name="ordering" value="<%=item.ordering  %>"><br><br>
                             <label for="slbox">Status</label>
@@ -154,6 +170,9 @@
                               <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
                               <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
                             </select>
+                            <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
+
+                            
                             <input class="form-control" name="id" value="<%= item.Slug %>" type="hidden">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </form>

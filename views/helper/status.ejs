@@ -1,17 +1,13 @@
 <% 
-statusHelper = (collection, status,  id) =>  { 
-        let xhmlStatus = '';
-        let xhtmlLink = systemConfig.admin + '/' +collection+ '/change-status/' + id + '/' + status  ;
-      
+    statusHelper = (collection, status, id) => {
+        let xhtmlStatus = '';
+        let link       = systemConfig.admin + '/' + collection + '/change-status/' + id + '/' + status ;
         if(status === "active") {
-          xhmlStatus = `<button type="button" class="btn btn-info">Active</button>`;
-            } else if (status === "inactive") {
-              xhmlStatus = `<button type="button" class="btn btn-warning">Inactive</button>`;
-             } 
-             return `<a href="${xhtmlLink}">${xhmlStatus}</a>`;
-} 
+            xhtmlStatus = '<span class="btn btn-info">active</span>';
+        }else if (status === "inactive") {
+            xhtmlStatus = '<span class="btn btn-warning">inactive</span>';
+        }
+
+        return `<a href="${link}">${xhtmlStatus}</a>`;
+    }
 %>
-
-
-
-

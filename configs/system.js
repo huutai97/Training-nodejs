@@ -1,3 +1,4 @@
 module.exports = {
-    admin : 'erp'
+    admin : 'erp',
+    formatTime: 'HH:mm DD-MM-YYYY'
 };

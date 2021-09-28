@@ -425,3 +425,10 @@ function debounce(func, wait, immediate) {
 $('a.btn-danger').on('click', () =>{
     if(!confirm("Mày muốn xóa hả...")) return false;
 });
+
+CKEDITOR.replace( 'editor' );
+// custom group_anme
+
+ $('select[name="group"]').change(function(){
+  $('input[name="group_name"]').val($(this).find('option:selected').text());
+  });

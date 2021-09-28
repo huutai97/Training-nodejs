@@ -9,17 +9,23 @@ mongoose.plugin(slug);
 mongoose.plugin(updateSlug);
 
 const schema = new mongoose.Schema
-(
-    {
+({
      name: String,
      status: String ,
      ordering:Number,
+     content: String,
      slug: {type: String,  slug:  'name', unique:   true},
+     crated:{
+        user_id: Number,
+        user_name : String,
+        time: Date,
     },
-    {
-        timestamps: true,
-    }
-);
+    modified:{
+        user_id: Number,
+        user_name: String,
+        time: Date,
+    },
+});
 
 autoIncrement.initialize(mongoose.connection);
 schema.plugin(autoIncrement.plugin, 'id');

@@ -1,5 +1,5 @@
 <%
-    paginationHelper  = (paginaTionObj,currentStatus,search)=>{
+    paginationHelper  = (paginaTionObj,type,currentStatus,search)=>{
         let totalItem = paginaTionObj.totalItem;
         let totalperPage = paginaTionObj.totalperPage;
         let pageRange = paginaTionObj.pageRange;
@@ -17,7 +17,7 @@
         let xhtmlNext = '';
         let xhtmlEnd = '';
       
-        let xhtmlLink = systemConfig.admin + '/items'+ /status/ + currentStatus  ;
+        let xhtmlLink = systemConfig.admin + '/'+ type + /status/ + currentStatus  ;
         if(search !== '') xhtmlLink += '?search=' + search +'&page=';
         else xhtmlLink += '?page=';
         if(currentPage  > 1){
@@ -66,18 +66,7 @@
     <h5 class="alert alert-primary" style="float: right;padding: 6px">Total items: <%=totalItem%> </h5>
    <h5 class="alert alert-primary" style="float: right;padding: 8px;">Total Page: <%=totalPages%> </h5>
    <h5 class="alert alert-primary" style="float: right;padding: 10px;">Showing <%= from %> to <%= to %>  of  <%=totalItem%></h5>
-   
-      
-        
-       <!-- <ul>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul> -->
+
   </nav>
 
 <%        

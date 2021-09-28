@@ -3,4 +3,6 @@ module.exports = {
     password : 'admin',
     database : 'training-nodejs',
     collection: 'items',
+    groups: 'groups',
+    users: 'users',
 };

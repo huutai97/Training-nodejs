@@ -13,7 +13,7 @@ const linkIndex = '/' + systemConfig.admin + '/items/';
  
 
 /* GET items list. */ 
-router.get('(/status/:status)?', (req, res, next) =>{
+router.get('(/status/:status)?', async (req, res, next) =>{
     
     req.body = JSON.parse(JSON.stringify(req.body));
     ValidateItems.validator(req);
@@ -24,7 +24,7 @@ router.get('(/status/:status)?', (req, res, next) =>{
     let item = {name: '',ordering:0,    status: 'novalue'}; // truyền giá trị để add item
     let search = paramHelper.getParam(req.query,    'search','');
     let currentStatus = paramHelper.getParam(req.params,'status','all');
-    let statusFilter =  helperPublish.createFillterStatus(currentStatus);
+    let statusFilter =  await helperPublish.createFillterStatus(currentStatus,'items');
     let paginaTion = {
             totalItem : 1,
             totalperPage : 5,
@@ -33,12 +33,12 @@ router.get('(/status/:status)?', (req, res, next) =>{
     };
     paginaTion.currentPage = parseInt(paramHelper.getParam(req.query,'page',1));
    
-    if(currentStatus==='all'){
-        if(search !== 'all')obj = {name:new RegExp(search,'i')};
-    }else{
-        obj = {status:currentStatus,name:new RegExp(search,'i')};
-    }
-    itemModel.count(obj).then((data)=>{
+   
+    if(currentStatus !=='all')   obj.status = currentStatus;
+    if(search !== '') obj.name = new RegExp(search,'i');
+
+
+    await itemModel.count(obj).then((data)=>{
         paginaTion.totalItem = data;
         itemModel
         .find(obj)
@@ -68,10 +68,19 @@ router.get('/change-status/:id/:status', async (req, res, next)=> {
     let currentStatus = paramHelper.getParam(req.params,    'status',   'active');
     let id            = paramHelper.getParam(req.params,    'id',   '');
     let status        = (currentStatus === "active")    ?   "inactive"  :   "active";
-    await itemModel.updateOne({_id:   id},{status:status},(err,result)=>{
-       
+    let data          = {
+        status:status,
+        modified: {
+            user_id :   0,
+            user_name: 0,
+            time: Date.now()
+        }
+    }
+    await itemModel.updateOne({_id:   id},data,(err,result)=>{
+        console.log(data);
         res.redirect(linkIndex);
     })
+    
    
 });
 
@@ -121,10 +130,17 @@ router.post('/save', async (req, res, next)=> {
                     name:item.name,
                     ordering:parseInt(item.ordering),
                     slug:item.slug,
-                    status: item.status 
-    
+                    status: item.status,
+                    content:item.content,
+                    modified: {
+                        user_id: 0,
+                        user_name : 0,
+                        time: Date.now()
+                    
+                    }
+                    
                 },(err,result) =>   {
-    
+                    console.log(item);
                     res.redirect(linkIndex);
                 });
         }
@@ -134,11 +150,17 @@ router.post('/save', async (req, res, next)=> {
             
             res.render(`${folderView}/form`, { pageTitle: 'add Items',   item,   errors});
         }else{
-            
+            item.crated = {
+                user_id: 0,
+                user_name : "AssMin",
+                time: Date.now(),
+            },
+           
            new itemModel(item).save().then(()=>{
                res.redirect(linkIndex);
             
            })
+           console.log(item);
         }
     }
   

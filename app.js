@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var app = express();
+var moment = require('moment');  
 
 const mongoose = require('mongoose');
 const validator = require('express-validator');
@@ -11,8 +13,9 @@ const databaseConfig = require('./configs/database');
 
 // Connect database MongoDatabase
 
-mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@erp.33ll6.mongodb.net/${databaseConfig.database}`);
-var app = express();
+mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@erp.33ll6.mongodb.net/${databaseConfig.database}`,{useNewUrlParser: true ,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify: true});
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +38,7 @@ app.use(validator({
 //set local variable
 
 app.locals.systemConfig = systemConfig;
-
+app.locals.moment = moment;
 
 //set up router backend
 app.use(`/${systemConfig.admin}`, require('./routes/backend/index'));
