@@ -8,10 +8,14 @@
 <% include ./../../helper/filter %>
 <% include ./../../helper/users %>
 <% include ./../../helper/selbox %>
+<% include ./../../helper/defaultIMG %>
 <%
 const collection = 'users'; 
 %>
 
+<%
+const pathAvatar = './../../../upload/users/';
+%>
 
 
 <body class="dark-edition"> 
@@ -30,9 +34,9 @@ const collection = 'users';
           <span class="navbar-toggler-icon icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end">
-          <form class="navbar-form"action="<%= systemConfig.admin %>/users/status/<%=currentStatus%> " method="GET">
+          <form class="navbar-form"action="<%= systemConfig.admin %>/users/status/<%=params.currentStatus%> " method="GET">
             <div class="input-group no-border">
-              <input type="text" value="<% search %>" name="search" class="form-control" placeholder="Search...">
+              <input type="text" value="<% params.search %>" name="search" class="form-control" placeholder="Search...">
               <button type="submit" class="btn btn-default btn-round btn-just-icon">
                 <i class="material-icons">search</i>
                 <div class="ripple-container"></div>
@@ -85,7 +89,7 @@ const collection = 'users';
               <div class="card-header card-header-primary">
                 <h4 class="card-title ">List USER</h4>
               
-                <%- filterstatusHelper(collection,statusFilter,search) %>
+                <%- filterstatusHelper(collection,statusFilter,params.search) %>
 
                 <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="float:right">Add New Items</a>
                 
@@ -102,7 +106,10 @@ const collection = 'users';
                         Name
                       </th>
                       <th>
-                        GOURP
+                        Avatar
+                      </th>
+                      <th>
+                        Group
                       </th>
                       <th>
                         Ordering
@@ -132,11 +139,15 @@ const collection = 'users';
                             <%= item.userName %>
                           </td>
                           <td>
+                            <%-ImgHelper(pathAvatar, item.avatar, item.userName) %>
+                          </td>
+                          <td>
                             <%= item.group.name %>
                             
                           </td>
+                          
                           <td>
-                            <input type="number" value="<%= item.ordering %>" >
+                            <input type="number" value="<%= item.ordering %>" ">
                             
                           </td>
                           <td>
@@ -164,13 +175,15 @@ const collection = 'users';
               </div>
               
           
-              <%=paginationHelper(paginaTion,collection,currentStatus, search) %>
+              <%=paginationHelper(params.paginaTion,collection,params.currentStatus, params.search) %>
              
             </div>
           </div>
         </div>
       </div>
+      <h2 float="right"><%- JSON.stringify(item)%>
     
+      </h2>
     </div>
 
     <div class="container demo">
@@ -180,7 +193,7 @@ const collection = 'users';
               <div class="modal-content">
                   <div class="modal-body"></div>
                       <div class="nav flex-sm-column flex-row">
-                        <form action="/erp/users/save" method="POST">
+                        <form action="/erp/users/save" method="POST" enctype="multipart/form-data">
                           <label for="fname"class="text-primary">Tên người dùng </label>
                         <input type="text" id="fname" class="modal-title" name="userName" value="<%=item.userName  %>"><br><br>
                    
@@ -193,13 +206,14 @@ const collection = 'users';
                           <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
                         </select>
  
-                        <%- selectBoxHelper('group',groupsItems,item.group) %>
-                     
+                       <%- selectBoxHelper('group',groupsItems,item.group) %>
+                       <label for="formFileLg">Select file</label>
+                       <input class="form-control form-control-lg" id="formFileLg" name="avatar" type="file" />
       
                         <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
                         <script>CKEDITOR.replace( 'editor' );</script>
                         <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
-                        <input class="form-control" name="group_name" value="" type="hidden">
+                        <input class="form-control" name="group_name" value="<%= item.group_name%>" type="hidden">
                         <button type="submit" class="btn btn-primary">Submit</button>
                       
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -219,6 +233,7 @@ const collection = 'users';
           </div>
       </div>
   </div>
+ 
 
 <!-- <% include ./../../elements/footer %> -->
 <% include ./../../elements/script %>

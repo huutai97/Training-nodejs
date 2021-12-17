@@ -13,7 +13,7 @@ let createFillterStatus = (currentStatus,collection) => {
         let condition = {};
         if(item.value !== "all") condition = {status:item.value};
         if(item.value === currentStatus ) statusFilter[index].class='btn btn-success';
-        currentModel.count({status : item.value }).then((data)=>{
+        currentModel.countDocuments({status : item.value }).then((data)=>{
             statusFilter[index].count   =   data;
          });
     });

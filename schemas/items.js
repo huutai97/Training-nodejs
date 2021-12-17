@@ -29,7 +29,7 @@ const schema = new mongoose.Schema
 
 autoIncrement.initialize(mongoose.connection);
 schema.plugin(autoIncrement.plugin, 'id');
-var Counter = mongoose.model('id', schema);
+
 
 module.exports = mongoose.model(databaseConfig.collection,schema);
 

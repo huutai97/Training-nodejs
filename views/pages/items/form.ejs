@@ -22,7 +22,7 @@
                 
                   <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
                   <script>CKEDITOR.replace( 'editor' );</script>
-                  <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
+                  <input class="form-control" name="id" value="<%= item.id %>" type="hidden">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 

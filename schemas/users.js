@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const databaseConfig = require('./../configs/database');
-
 var autoIncrement = require('mongoose-auto-increment');
 var slug = require('mongoose-slug-generator');
 var updateSlug = require('mongoose-slug-updater');
-
 mongoose.plugin(slug);
 mongoose.plugin(updateSlug);
 
@@ -14,6 +12,7 @@ const schema = new mongoose.Schema
      status: String ,
      ordering:Number,
      group_acp:String,
+     avatar:String,
      group:{
          id: String,
          name: String,

@@ -1,1 +1,7 @@
 - Validate users lỗi; 
+Upadte : 07/12/21
+- Rút gọn code chưa hoàn thiện
+
+///
+Update ngày 08/12/2021
+- Hoàn thành rút gọn code Backend theo cấu trúc MVC

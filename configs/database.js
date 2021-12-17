@@ -5,4 +5,6 @@ module.exports = {
     collection: 'items',
     groups: 'groups',
     users: 'users',
+    category: 'category',
+    article: 'article',
 };
