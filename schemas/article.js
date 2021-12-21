@@ -10,6 +10,7 @@ const schema = new mongoose.Schema
 ({
      userName: String,
      status: String ,
+     trend : String,
      ordering:Number,
      group_acp:String,
      thumb:String,

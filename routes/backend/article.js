@@ -72,6 +72,20 @@ router.get('/change-status/:id/:status', async (req, res, next)=> {
     
    
 });
+/*  change top_post item. */
+router.get('/change-special/:id/:trend', async (req, res, next)=> {
+    let currentTrend = paramHelper.getParam(req.params,    'trend',   'active');
+    let id            = paramHelper.getParam(req.params,    'id',   '');
+
+    await ArticleModel.changeSpecial(id,currentTrend).then((result)=>{
+        
+        res.redirect(linkIndex);
+    })
+    
+   
+});
+
+
 /*  change groups item. */
 router.get('/change-groups-acp/:id/:group_acp', (req, res, next)=> {
     let currentUsers= paramHelper.getParam(req.params,'group_acp','yes');

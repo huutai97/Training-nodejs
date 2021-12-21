@@ -2,8 +2,8 @@
 <% include ./../../elements/linkref %>
 <% include ./../../elements/sidebar-wrapper %>
 <% include ./../../elements/header %>
-
 <% include ./../../helper/status %>
+<% include ./../../helper/trendHelper %>
 <% include ./../../helper/pagination %>
 <% include ./../../helper/filter %>
 <% include ./../../helper/article %>
@@ -111,7 +111,9 @@ const pathAvatar = './../../../upload/thumb/';
                       <th>
                         Category
                       </th>
-                   
+                      <th>
+                        Post Trending
+                      </th>
                       <th>
                         Status
                       </th>
@@ -121,9 +123,7 @@ const pathAvatar = './../../../upload/thumb/';
                       <th>
                         Who
                       </th>
-                      <th>
-                        Modified
-                      </th>
+                   
                      
                     </thead>
                     <tbody>
@@ -143,6 +143,9 @@ const pathAvatar = './../../../upload/thumb/';
                             <%- item.category.name%>
                             
                           </td>
+                          <td>
+                            <%-trendHelper(collection, item.trend, item.id) %>
+                          </td>
                           
                        
                           <td>
@@ -158,10 +161,7 @@ const pathAvatar = './../../../upload/thumb/';
                            <%= item.crated.user_name %><br>
                            <%= moment(item.crated.time).format(systemConfig.formatTime)  %>
                            </td>
-                           <td>
-                            <%= item.modified.user_name %><br>
-                            <%= moment(item.modified.time).format(systemConfig.formatTime)  %>
-                            </td>
+                          
                         </tr>
                 <% })%> 
                     </tbody>

@@ -42,7 +42,7 @@ app.locals.moment = moment;
 
 //set up router backend
 app.use(`/${systemConfig.admin}`, require('./routes/backend/index'));
-
+app.use(`/${systemConfig.blog}`, require('./routes/frontend/index'));
 
 //set up router frontend
 app.use('/', require('./routes/frontend/index'));

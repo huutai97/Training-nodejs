@@ -31,6 +31,11 @@ const pathAvatar = './../../../upload/thumb/';
                     <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
                     <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
                   </select>
+                  <select name="trend"class="form-control" >
+                    <option value="novalue">Active Top Post ? </option>
+                    <option value="active"<%=(item.trend == "active") ? 'selected="selected"' : '' %> >Active</option>
+                    <option value="inactive" <%=(item.trend == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
+                  </select>
                   <%- selectBoxHelper('category',categoryItems,item.category) %>
                   <label for="formFileLg" class="btn btn-primary">Select file</label>
                   <input class="form-control form-control-lg" id="formFileLg" name="thumb" type="file" />

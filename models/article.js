@@ -10,7 +10,7 @@ module.exports = {
         return ArticleModel
         .find(params.obj)
         .sort({_id:'descending'})
-        .select('userName status odering crated content modified category.name thumb')
+        .select('userName status odering crated content modified category.name thumb trend')
         .skip((params.paginaTion.currentPage-1)    *   params.paginaTion.totalperPage)
         .limit(params.paginaTion.totalperPage)
     },
@@ -18,6 +18,22 @@ module.exports = {
     getItem : (id, options = null)=>{
        return ArticleModel.findById({_id:id});
     },
+    listItemFrontend : (params = null, options = null)=>{
+        if(options.task == 'top-post'){
+            return ArticleModel.find({status: 'active',trend:'active'})
+            .select('userName crated.user_name crated.time category.name thumb slug')
+            .limit(8)
+            .sort({_id:'asc'})
+        }
+        if(options.task == 'list-news'){
+            return ArticleModel
+            .find({status: 'active'})
+            .select('userName crated.user_name crated.time category.name thumb slug')
+            .limit(3)
+            .sort({_id:'desc'})
+        }
+       
+     },
     countItem : (params,options = null)=>{
        return ArticleModel.countDocuments(params.obj);
     },
@@ -26,6 +42,19 @@ module.exports = {
         let status        = (currentStatus === "active")    ?   "inactive"  :   "active";
         let data          = {
             status:status,
+            modified: {
+                user_id :   0,
+                user_name: 0,
+                time: Date.now()
+            }
+        }
+        return  ArticleModel.updateOne({_id:   id},data);
+     },
+     changeSpecial : (id,currentTrend = null)=>{
+       
+        let trend        = (currentTrend === "active")    ?   "inactive"  :   "active";
+        let data          = {
+            trend:trend,
             modified: {
                 user_id :   0,
                 user_name: 0,
@@ -79,8 +108,9 @@ module.exports = {
                      ordering:parseInt(item.ordering),
                      slug:item.slug,
                      status: item.status,
+                     trend: item.trend,
                      content:item.content,
-                     thumb : item.avatar,
+                     thumb : item.thumb,
                      category:{
                         id: item.category,
                         name: item.category_name,
