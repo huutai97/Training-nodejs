@@ -1,3 +1,7 @@
+
+<% const ahref = 'category' %>
+<% const folderThumb = './../upload/thumb/' %>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -24,9 +28,9 @@
             <link rel="stylesheet" href="./../../../frontend/assets/css/style.css">
             <link rel="stylesheet" href="./../../../frontend/assets/css/responsive.css">
    </head>
-
+   
    <body>
-       
+
     <!-- Preloader Start -->
     <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -94,8 +98,14 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
+                                            <li><a href="">Home</a></li>
+                                            <li><a href="<%=ahref%>">Category</a>
+                                                <ul class="submenu">
+                                                    <% itemCategory.forEach((items)=>{ %>
+                                                        <li><a href="<%=items.id %>"><%=items.name %></a></li>
+                                                <% }) %>
+                                                </ul></li>
+                                                  
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="latest_news.html">Latest News</a></li>
                                             <li><a href="contact.html">Contact</a></li>
@@ -152,11 +162,12 @@
                             <nav>                                                                     
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Lifestyle</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Travel</a>
-                                    <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
-                                    <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
-                                    <a class="nav-item nav-link" id="nav-technology" data-toggle="tab" href="#nav-techno" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
+                                    <% itemCategory.forEach((category)=>{ %>
+                                        <a class="nav-item nav-link" id="nav-profile-tab"  href="/category/<%= category.id %>" role="tab" target="_blank" aria-controls="nav-profile" aria-selected="false">
+                                            <%= category.name %>
+                                        </a>
+
+                                    <% })%>
                                 </div>
                             </nav>
                             <!--End Nav Button  -->
@@ -171,50 +182,21 @@
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
                                 <div class="whats-news-caption">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="./../../../frontend/assets/img/news/whatNews1.jpg" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="./../../../frontend/assets/img/news/whatNews2.jpg" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
+                                       
+                                            <% itemInCategory.forEach((items)=>{ %>
+                                                <div class="col-lg-6 col-md-6"> 
+                                                <div class="single-what-news mb-100">
+                                                    <div class="what-img">
+                                                        <img src="<%= folderThumb+items.thumb %>" alt="">
+                                                    </div>
+                                                    <div class="what-cap">
+                                                        <span class="color1"><%= items.category.name %></span>
+                                                        <h4><a href="#"><%= items.userName %></a></h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div> 
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="./../../../frontend/assets/img/news/whatNews3.jpg" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="single-what-news mb-100">
-                                                <div class="what-img">
-                                                    <img src="./../../../frontend/assets/img/news/whatNews4.jpg" alt="">
-                                                </div>
-                                                <div class="what-cap">
-                                                    <span class="color1">Night party</span>
-                                                    <h4><a href="#">Welcome To The Best Model  Winner Contest</a></h4>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <% })%>
+                                                    
                                     </div>
                                 </div>
                             </div>
@@ -568,7 +550,7 @@
                             <div class="single-footer-caption">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="./../../../frontend/assets/img/logo/logo2_footer.png" alt=""></a>
+                                    <a href=""><img src="./../../../frontend/assets/img/logo/logo2_footer.png" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">

@@ -34,6 +34,15 @@ module.exports = {
         }
         return  itemModel.updateOne({_id:   id},data);
      },
+     listItemFrontend : (params = null, options = null)=>{
+         if(options.task == 'list-category'){
+            return itemModel
+            .find({status: 'active'})
+            .select('name slug')
+            .limit(4)
+            .sort({_id:'desc'})
+        }
+    },
     deleteItem : (id,options = null)=>{
      return itemModel.deleteOne({_id:   id});
      },

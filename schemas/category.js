@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const databaseConfig = require('./../configs/database');
-
 var autoIncrement = require('mongoose-auto-increment');
 var slug = require('mongoose-slug-generator');
 var updateSlug = require('mongoose-slug-updater');

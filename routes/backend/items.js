@@ -17,7 +17,7 @@ router.get('(/status/:status)?', async (req, res, next) =>{
     let params = {};
     req.body = JSON.parse(JSON.stringify(req.body));
     ValidateItems.validator(req);
-    let item = {name: '',ordering:0,    status: 'novalue',slug:''};
+    let item = {name: '',ordering:0,    status: 'novalue',slug:'',link:''};
     let save = Object.assign(req.body);
     let errorsSave = req.validationErrors();
     params.search = paramHelper.getParam(req.query,    'search','');
