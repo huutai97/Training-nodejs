@@ -12,8 +12,7 @@ const schema = new mongoose.Schema
 ({
      name: String,
      status: String ,
-     ordering:Number,
-     content: String,
+     link: String,
      slug: {type: String,  slug:  'name', unique:   true},
      crated:{
         user_id: Number,

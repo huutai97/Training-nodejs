@@ -32,6 +32,20 @@ module.exports = {
             .limit(3)
             .sort({_id:'desc'})
         }
+        if(options.task == 'list-items-in-category'){
+            return ArticleModel
+            .find({status: 'active','category.id' : params.id})
+            .select('userName crated.user_name crated.time category.name thumb slug')
+            .limit(4)
+            .sort({_id:'desc'})
+        }
+        if(options.task == 'list-news-category-homepage'){
+            return ArticleModel
+            .find({status: 'active'})
+            .select('userName crated.user_name crated.time category.name thumb slug')
+            .limit(4)
+            .sort({_id:'asc'})
+        }
        
      },
     countItem : (params,options = null)=>{

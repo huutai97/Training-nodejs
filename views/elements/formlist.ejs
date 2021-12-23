@@ -89,7 +89,7 @@ const collection = 'items';
                           Name
                         </th>
                         <th>
-                          Ordering
+                          Social link
                         </th>
                         <th>
                           Status
@@ -104,6 +104,8 @@ const collection = 'items';
                           Modified
                         </th>
                       </thead>
+
+                       
                       <tbody>
                         <% include ./../helper/status %>
                         <%   items.forEach((item,index)=>{%>
@@ -114,9 +116,9 @@ const collection = 'items';
                             <td>
                               <%= item.name %>
                             </td>
-                            <td>
-                              <input type="number" value="<%= item.ordering %>" >
-                              
+                            <td >
+                              <%-item.link.substring(0,20)%> (Limit Text)
+
                             </td>
                             <td>
                              <%-statusHelper('items', item.status, item.id) %>
@@ -160,20 +162,15 @@ const collection = 'items';
                     <div class="modal-body"></div>
                         <div class="nav flex-sm-column flex-row">
                           <form action="/erp/items/save" method="POST">
-                            <label for="fname">First name:</label>
+                            <label for="fname">Social name:</label>
                             <input type="text" id="fname" name="name" value="<%=item.name  %>"><br><br>
-                            <label for="lname">Ordering:</label>
-                            <input type="text" id="lname" name="ordering" value="<%=item.ordering  %>"><br><br>
+                            <label for="link">Social link:</label>
+                            <input type="text" id="link" name="link" value="<%=item.link  %>"><br><br>
                             <label for="slbox">Status</label>
                             <select name="status" >
                               <option value="novalue">Choose Status</option>
                               <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
-                              <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
-                            </select>
-                            <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
-
-                            
-                            <input class="form-control" name="id" value="<%= item.Slug %>" type="hidden">
+                              <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>    <input class="form-control" name="id" value="<%= item.id %>" type="hidden">
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </form>
                         </div>

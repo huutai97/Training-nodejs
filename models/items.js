@@ -10,13 +10,22 @@ module.exports = {
       return itemModel
         .find(obj)
         .sort({_id:'descending'})
-        .select('name status ordering slug crated modified')
+        .select('name status ordering slug crated modified link')
         .skip((params.paginaTion.currentPage-1)    *   params.paginaTion.totalperPage)
         .limit(params.paginaTion.totalperPage);
     },
-    getItem : (slug)=>{
-       return itemModel.findOne({slug:slug});
+    getItem : (id)=>{
+       return itemModel.findOne({_id:   id});
+    }, 
+    listItemSocial : (params = null, options = null)=>{
+        if(options.task == 'list-social'){
+            return itemModel.find({status: 'active'})
+            .select('name link')
+            .limit(4)
+            
+        }
     },
+
     countItem : (params,options = null)=>{
        return itemModel.countDocuments(params.obj);
     },
@@ -50,20 +59,18 @@ module.exports = {
               console.log(item.slug)
 
                 return itemModel.updateOne({_id: item.id},{
-                     name:item.name,
-                     ordering:parseInt(item.ordering),
+                     name:item.name, 
                      slug:item.slug,
                      status: item.status,
-                     content:item.content,
+                     link:item.link,
                      modified: {
                          user_id: 0,
                          user_name : 0,
                          time: Date.now()
                      }
                  });  
-                 
-
         }
       
-   }
+   },
+   
 }

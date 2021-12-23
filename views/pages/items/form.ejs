@@ -7,22 +7,15 @@
           <div class="col-md-8">
               <div class="form"style="float:right;height: 100%;">
                 <form action="/erp/items/save" method="POST">
-                  <label for="fname">First name:</label>
+                  <label for="fname">Social name:</label>
                   <input type="text" id="fname" name="name" value="<%=item.name  %>"><br><br>
-                  <label for="fname">Slug:</label>
-                  <input type="text" id="slug" name="slug" value="<%=item.slug  %>"><br><br>
-                  <label for="lname">Ordering:</label>
-                  <input type="text" id="Ordering" name="ordering" value="<%=item.ordering  %>"><br><br>
+                  <label for="link">Social link:</label>
+                  <input type="text" id="link" name="link" value="<%=item.link  %>"><br><br>
                   <label for="slbox">Status</label>
                   <select name="status" >
                     <option value="novalue">Choose Status</option>
                     <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
-                    <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
-                  </select>
-                
-                  <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
-                  <script>CKEDITOR.replace( 'editor' );</script>
-                  <input class="form-control" name="id" value="<%= item.id %>" type="hidden">
+                    <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>    <input class="form-control" name="id" value="<%= item.id %>" type="hidden">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
