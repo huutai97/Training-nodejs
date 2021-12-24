@@ -7,5 +7,5 @@ router.use('/',require('./home'))
 /* GET category page. */
 router.use('/category',require('./category'))
 /* GET details page. */
-router.use('/post',require('./post'))
+router.use('/p',require('./post'))
 module.exports = router;

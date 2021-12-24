@@ -46,10 +46,15 @@ module.exports = {
             .limit(4)
             .sort({_id:'asc'})
         }
+        
        
      },
     countItem : (params,options = null)=>{
        return ArticleModel.countDocuments(params.obj);
+    },
+    getItemPOST : (id,options = null)=>{
+        return ArticleModel.findById(id)
+        .select('userName crated.user_name crated.time category.name thumb slug content')
     },
     changeStatus : (id,currentStatus = null)=>{
        

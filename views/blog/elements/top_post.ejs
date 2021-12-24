@@ -12,9 +12,11 @@
                             <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <div class="trending-animated">
                                 <ul id="js-news" class="js-hidden">
-                                    <li class="news-item">Bangladesh dolor sit amet, consectetur adipisicing elit.</li>
-                                    <li class="news-item">Spondon IT sit amet, consectetur.......</li>
-                                    <li class="news-item">Rem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                    <%itemsTrend.forEach((items)=>{ %>
+                                        <li class="news-item"><%=items.userName %></li>
+                                   <% }) %>
+                                  
+                                    
                                 </ul>
                             </div>
                             
@@ -26,14 +28,14 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img" style="width: 100%;height: 450px;">
-                              
-                                <img src="<%=folderThumb+itemsTrend[0].thumb%>" alt="">
+                                <a href="p/<%=itemsTrend[0].id %>"><img src="<%=folderThumb+itemsTrend[0].thumb%>" alt="itemsTrend[0].thumb">
                                 <div class="trend-top-cap">
                                     <span><%=itemsTrend[0].category.name %></span>
-                                    <h2><a href="details.html"><%=itemsTrend[0].userName %></a></h2>
-                                    <h3 style="color: azure;">By: <%=itemsTrend[0].crated.user_name %></a></h3>
+                                    <h2><%=itemsTrend[0].userName %></a></h2>
+                                    <h3 style="color: azure;">By: <%=itemsTrend[0].crated.user_name %></h3>
                                     <h4 style="color: azure;""><%=moment(itemsTrend[0].crated.time).format("DD/MM/YYYY")%></a></h4>
                                 </div>
+                            </a>
                             </div>
                         </div>
                         <!-- Trending Bottom -->
@@ -42,35 +44,41 @@
                                
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[1].id %>"> 
                                         <div class="trend-bottom-img mb-30">
                                             <img src="<%=folderThumb+itemsTrend[1].thumb%>"style="height:150px" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3"><%=itemsTrend[1].category.name %></span>
-                                            <h4><a href="details.html"> <%=itemsTrend[1].userName %></a></h4>
+                                            <h4><%=itemsTrend[1].userName %></h4>
                                         </div>
+                                    </a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[2].id %>"> 
                                         <div class="trend-bottom-img mb-30">
                                             <img src="<%=folderThumb+itemsTrend[2].thumb%>" style="height:150px"alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3"><%=itemsTrend[2].category.name %></span>
-                                            <h4><a href="details.html"> <%=itemsTrend[2].userName %></a></h4>
+                                            <h4><%=itemsTrend[2].userName %></h4>
                                         </div>
+                                    </a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[3].id %>"> 
                                         <div class="trend-bottom-img mb-30">
                                             <img src="<%=folderThumb+itemsTrend[3].thumb%>"style="height:150px" alt="">
                                         </div>
                                         <div class="trend-bottom-cap">
                                             <span class="color3"><%=itemsTrend[3].category.name %></span>
-                                            <h4><a href="details.html"> <%=itemsTrend[3].userName %></a></h4>
+                                            <h4><%=itemsTrend[3].userName %></h4>
                                         </div>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -79,15 +87,19 @@
                     <!-- Riht content -->
                     <div class="col-lg-4">
                         <% for(let i = 4; i < itemsTrend.length; i++){ %>  <!-- array begin with 4, if > 4, show data to frontend -->
+                            <a href="p/<%=itemsTrend[i].id %>">
                             <div class="trand-right-single d-flex">
+                              
                                 <div class="trand-right-img">
-                                    <img src="<%=folderThumb+itemsTrend[i].thumb%>" style="width: 100%;height: 120px;" alt="<%=itemsTrend[i].userName %>">
+                                    <img src="<%=folderThumb+itemsTrend[i].thumb%>" style="width: 120px;height: 100px;" alt="<%=itemsTrend[i].userName %>">
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color1"><%=itemsTrend[i].category.name %></span>
-                                    <h4><a href="details.html"><%=itemsTrend[i].userName %></a></h4>
+                                    <h4><%=itemsTrend[i].userName %></h4>
                                 </div>
+                          
                             </div>
+                        </a>
                         <%} %>
                        
                         

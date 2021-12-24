@@ -1,10 +1,13 @@
+<% const folderThumb = './../upload/thumb/' %>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
+   
 
 <head>
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title>News HTML-5 Template </title>
+   <title><%=itemsDetail.userName %></title>
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,100 +27,14 @@
   <link rel="stylesheet" href="./../../../frontend/assets/css/nice-select.css">
   <link rel="stylesheet" href="./../../../frontend/assets/css/style.css">
   <link rel="stylesheet" href="./../../../frontend/assets/css/responsive.css">
+
 </head>
 
 <body>
    <header>
       <!-- Header Start -->
-     <div class="header-area">
-          <div class="main-header ">
-              <div class="header-top black-bg d-none d-md-block">
-                 <div class="container">
-                     <div class="col-xl-12">
-                          <div class="row d-flex justify-content-between align-items-center">
-                              <div class="header-info-left">
-                                  <ul>     
-                                      <li><img src="./../../../frontend/assets/img/icon/header_icon1.png" alt="">34ยบc, Sunny </li>
-                                      <li><img src="./../../../frontend/assets/img/icon/header_icon1.png" alt="">Tuesday, 18th June, 2019</li>
-                                  </ul>
-                              </div>
-                              <div class="header-info-right">
-                                  <ul class="header-social">    
-                                      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                     <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                  </ul>
-                              </div>
-                          </div>
-                     </div>
-                 </div>
-              </div>
-              <div class="header-mid d-none d-md-block">
-                 <div class="container">
-                      <div class="row d-flex align-items-center">
-                          <!-- Logo -->
-                          <div class="col-xl-3 col-lg-3 col-md-3">
-                              <div class="logo">
-                                  <a href="index.html"><img src="./../../../frontend/assets/img/logo/logo.png" alt=""></a>
-                              </div>
-                          </div>
-                          <div class="col-xl-9 col-lg-9 col-md-9">
-                              <div class="header-banner f-right ">
-                                  <img src="./../../../frontend/assets/img/hero/header_card.jpg" alt="">
-                              </div>
-                          </div>
-                      </div>
-                 </div>
-              </div>
-             <div class="header-bottom header-sticky">
-                  <div class="container">
-                      <div class="row align-items-center">
-                          <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
-                              <!-- sticky -->
-                                  <div class="sticky-logo">
-                                      <a href="index.html"><img src="./../../../frontend/assets/img/logo/logo.png" alt=""></a>
-                                  </div>
-                              <!-- Main-menu -->
-                              <div class="main-menu d-none d-md-block">
-                                  <nav>                  
-                                      <ul id="navigation">    
-                                          <li><a href="index.html">Home</a></li>
-                                          <li><a href="categori.html">Category</a></li>
-                                          <li><a href="about.html">About</a></li>
-                                          <li><a href="latest_news.html">Latest News</a></li>
-                                          <li><a href="contact.html">Contact</a></li>
-                                          <li><a href="#">Pages</a>
-                                              <ul class="submenu">
-                                                  <li><a href="elements.html">Element</a></li>
-                                                  <li><a href="blog.html">Blog</a></li>
-                                                  <li><a href="single-blog.html">Blog Details</a></li>
-                                                  <li><a href="details.html">Categori Details</a></li>
-                                              </ul>
-                                          </li>
-                                      </ul>
-                                  </nav>
-                              </div>
-                          </div>             
-                          <div class="col-xl-2 col-lg-2 col-md-4">
-                              <div class="header-right-btn f-right d-none d-lg-block">
-                                  <i class="fas fa-search special-tag"></i>
-                                  <div class="search-box">
-                                      <form action="#">
-                                          <input type="text" placeholder="Search">
-                                          
-                                      </form>
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- Mobile Menu -->
-                          <div class="col-12">
-                              <div class="mobile_menu d-block d-md-none"></div>
-                          </div>
-                      </div>
-                  </div>
-             </div>
-          </div>
-     </div>
+      <% include ./../../elements/menu %>
+    
       <!-- Header End -->
   </header>
      
@@ -128,46 +45,21 @@
             <div class="col-lg-8 posts-list">
                <div class="single-post">
                   <div class="feature-img">
-                     <img class="img-fluid" src="./../../../frontend/assets/img/blog/single_blog_1.png" alt="">
+                     <img class="img-fluid" src="<%=folderThumb + itemsDetail.thumb %>" style="width: 100%;height: 450px;" alt="<%=itemsDetail.thumb%>">
                   </div>
                   <div class="blog_details">
-                     <h2>Second divided from form fish beast made every of seas
-                        all gathered us saying he our
+                     <h2>
+                        <%=itemsDetail.userName%>
+                 
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i>  <%=itemsDetail.category.name%></a></li>
                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                      </ul>
                      <p class="excert">
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
+                        <%-itemsDetail.content%>
                      </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
-                     </p>
-                     <div class="quote-wrapper">
-                        <div class="quotes">
-                           MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                           should have to spend money on boot camp when you can get the MCSE study materials yourself at
-                           a fraction of the camp price. However, who has the willpower to actually sit through a
-                           self-imposed MCSE training.
-                        </div>
-                     </div>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower
-                     </p>
-                     <p>
-                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you
-                        should have to spend money on boot camp when you can get the MCSE study materials yourself at a
-                        fraction of the camp price. However, who has the willpower to actually sit through a
-                        self-imposed MCSE training. who has the willpower to actually
-                     </p>
+                  
                   </div>
                </div>
                <div class="navigation-top">
@@ -190,7 +82,7 @@
                            class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                            <div class="thumb">
                               <a href="#">
-                                 <img class="img-fluid" src="./../../../frontend/assets/img/post/preview.png" alt="">
+                                 <img class="img-fluid" src="./../../../frontend/assets/img/post/preview.png" style="height: 60px;width: 60px;" alt="">
                               </a>
                            </div>
                            <div class="arrow">
@@ -220,7 +112,7 @@
                            </div>
                            <div class="thumb">
                               <a href="#">
-                                 <img class="img-fluid" src="./../../../frontend/assets/img/post/next.png" alt="">
+                                 <img class="img-fluid" src="./../../../frontend/assets/img/post/next.png"style="height: 60px;width: 60px;" alt="">
                               </a>
                            </div>
                         </div>
@@ -244,8 +136,8 @@
                   <div class="comment-list">
                      <div class="single-comment justify-content-between d-flex">
                         <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="./../../../frontend/assets/img/comment/comment_1.png" alt="">
+                           <div class="thumb" ">
+                              <img src="./../../../frontend/assets/img/comment/comment_1.png"style="height:70px;width: 70px;"alt="">
                            </div>
                            <div class="desc">
                               <p class="comment">
@@ -271,7 +163,7 @@
                      <div class="single-comment justify-content-between d-flex">
                         <div class="user justify-content-between d-flex">
                            <div class="thumb">
-                              <img src="./../../../frontend/assets/img/comment/comment_2.png" alt="">
+                              <img src="./../../../frontend/assets/img/comment/comment_2.png" style="height:70px;width: 70px;"alt="">
                            </div>
                            <div class="desc">
                               <p class="comment">
@@ -297,7 +189,7 @@
                      <div class="single-comment justify-content-between d-flex">
                         <div class="user justify-content-between d-flex">
                            <div class="thumb">
-                              <img src="./../../../frontend/assets/img/comment/comment_3.png" alt="">
+                              <img src="./../../../frontend/assets/img/comment/comment_3.png" style="height:70px;width: 70px;"alt="">
                            </div>
                            <div class="desc">
                               <p class="comment">
@@ -372,82 +264,36 @@
                   <aside class="single_sidebar_widget post_category_widget">
                      <h4 class="widget_title">Category</h4>
                      <ul class="list cat-list">
+                        <%itemsCategory.forEach((items)=>{%>
                         <li>
                            <a href="#" class="d-flex">
-                              <p>Resaurant food</p>
-                              <p>(37)</p>
+                              <p>
+                                 <a href="<%=items.slug %>"><%=items.name %></a>
+                             </p>
+                           
                            </a>
                         </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Travel news</p>
-                              <p>(10)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Modern technology</p>
-                              <p>(03)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Product</p>
-                              <p>(11)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Inspiration</p>
-                              <p>(21)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Health Care</p>
-                              <p>(21)</p>
-                           </a>
-                        </li>
+                        <% }) %>
                      </ul>
                   </aside>
                   <aside class="single_sidebar_widget popular_post_widget">
                      <h3 class="widget_title">Recent Post</h3>
-                     <div class="media post_item">
-                        <img src="./../../../frontend/assets/img/post/post_1.png" alt="post">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>From life was you fish...</h3>
-                           </a>
-                           <p>January 12, 2019</p>
+                     <%itemsRecentPost.forEach((items)=>{%>
+                        <a href="<%=items.id%>">
+                        <div class="media post_item">   
+                           <img src="<%=folderThumb+items.thumb %>" style="height: 100%;width: 80px;margin-bottom: 15px;border-radius: 5px;" alt="<%=items.thumb %>">
+                           <div class="media-body">
+                            
+                                 <h3><%=items.userName %></h3>
+                            
+                              <p>Time : <%=moment(items.crated.time).format("DD/MM/YYYY")%></p>
+                           </div>
+                       
                         </div>
-                     </div>
-                     <div class="media post_item">
-                        <img src="./../../../frontend/assets/img/post/post_2.png" alt="post">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>The Amazing Hubble</h3>
-                           </a>
-                           <p>02 Hours ago</p>
-                        </div>
-                     </div>
-                     <div class="media post_item">
-                        <img src="./../../../frontend/assets/img/post/post_3.png" alt="post">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>Astronomy Or Astrology</h3>
-                           </a>
-                           <p>03 Hours ago</p>
-                        </div>
-                     </div>
-                     <div class="media post_item">
-                        <img src="./../../../frontend/assets/img/post/post_4.png" alt="post">
-                        <div class="media-body">
-                           <a href="single-blog.html">
-                              <h3>Asteroids telescope</h3>
-                           </a>
-                           <p>01 Hours ago</p>
-                        </div>
-                     </div>
+                     </a>
+                    <% }) %>
+                    
+                     
                   </aside>
                   <aside class="single_sidebar_widget tag_cloud_widget">
                      <h4 class="widget_title">Tag Clouds</h4>

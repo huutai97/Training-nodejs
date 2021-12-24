@@ -4,12 +4,20 @@ const folderView = ('blog/pages/home/');
 const ArticleModel = require('../../models/article'); // patch models
 const CategoryModel = require('../../models/category'); // patch models
 const SocialItem = require('../../models/items'); // patch models
+const paramHelper = require('../../helper-publish/params');
+
 /* GET home admin page. */
-router.get('/', async function(req, res, next) { let itemsTrend = [];
+router.get('/', async (req, res, next)=> { 
+  let itemsDetail = paramHelper.getParam(req.params,'id','');
+  let itemsTrend = [];
   let itemsNew = []; 
   let itemsCategory = [];
   let itemsNewsHomePage = [];
   let itemSocial = [];
+ 
+    await ArticleModel.getItemPOST(itemsDetail,null).then((items)=>{
+      itemsDetail = items ; 
+    });
    await ArticleModel.listItemFrontend(null,{task:'top-post'}).then((items)=>{
     itemsTrend = items ; 
     });
@@ -25,16 +33,17 @@ router.get('/', async function(req, res, next) { let itemsTrend = [];
     await SocialItem.listItemSocial(null,{task:'list-social'}).then((items)=>{
       itemSocial = items ; 
     });
-              
+   
     res.render(`${folderView}index`,{
       top_post:true,
       itemsTrend,
       itemsNew,
       itemsCategory,
       itemsNewsHomePage,
-      itemSocial
+      itemSocial,
+      itemsDetail
   });
- 
+
 });
 
 module.exports = router;

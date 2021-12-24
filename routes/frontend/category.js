@@ -19,9 +19,7 @@ router.get('(/:id)?', async (req, res, next)=> {
     res.render(`${folderView}index`,{
       itemCategory,
       itemInCategory
-   
   });
-  console.log(itemInCategory)
 });
 
 module.exports = router;

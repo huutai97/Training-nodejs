@@ -1,13 +1,12 @@
 <% const folderThumb = './../upload/thumb/' %>
 
-<% JSON.stringify(itemSocial)
-%>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>News HTML-5 Template </title>
+        <title>Trang Tin Tức Tổng Hợp </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -45,106 +44,7 @@
 
     <header>
         <!-- Header Start -->
-       <div class="header-area">
-            <div class="main-header ">
-                <div class="header-top black-bg d-none d-md-block">
-                   <div class="container">
-                       <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left">
-                                    <ul>     
-                                        <li><img src="./../../../frontend/assets/img/icon/header_icon1.png" alt="">34ºc, Sunny </li>
-                                        <li><img src="./../../../frontend/assets/img/icon/header_icon1.png" alt="">Tuesday, 18th June, 2019</li>
-                                    </ul>
-                                </div>
-                                <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                       <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                       </div>
-                   </div>
-                </div>
-                <div class="header-mid d-none d-md-block">
-                   <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-3 col-lg-3 col-md-3">
-                                <div class="logo">
-                                    <a href="index.html"><img src="./../../../frontend/assets/img/logo/logo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-9 col-lg-9 col-md-9">
-                                <div class="header-banner f-right ">
-                                    <img src="./../../../frontend/assets/img/hero/header_card.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                   </div>
-                </div>
-               <div class="header-bottom header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
-                                <!-- sticky -->
-                                    <div class="sticky-logo">
-                                        <a href="index.html"><img src="./../../../frontend/assets/img/logo/logo.png" alt=""></a>
-                                    </div>
-                                <!-- Main-menu -->
-                                <div class="main-menu d-none d-md-block">
-                                    <nav>                  
-                                        <ul id="navigation">    
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">Category</a>
-                                         
-                                                
-                                                <ul class="submenu">
-                                                    <% itemsCategory.forEach((items)=>{ %>
-                                                        <li><a href="category/<%=items.id %>"><%=items.name %></a></li>
-                                                   <% }) %>
-                                                  
-                                                   
-                                                </ul>
-                                            </li>
-
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>             
-                            <div class="col-xl-2 col-lg-2 col-md-4">
-                                <div class="header-right-btn f-right d-none d-lg-block">
-                                    <i class="fas fa-search special-tag"></i>
-                                    <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="Search">
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-md-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
+            <% include ./../../elements/menu %>
         <!-- Header End -->
     </header>
 
@@ -170,14 +70,17 @@
                     <div class="col-12">
                         <div class="weekly-news-active dot-style d-flex dot-style">
                             <% itemsNew.forEach((items)=>{ %>
+                                 <a href="p/<%=items.id%>">
                                 <div class="weekly-single active">
+                                   
                                     <div class="weekly-img">
-                                        <img src="<%= folderThumb + items.thumb %>"style="width: 370px;height: 431px;" alt="">
+                                        <img src="<%= folderThumb + items.thumb %>"style="width: 100%;height: 431px;" alt="">
                                     </div>
                                     <div class="weekly-caption">
                                         <span class="color1"><%=items.category.name%></span>
-                                        <h4><a href="#"><%=items.userName%></a></h4>
+                                        <h4><%=items.userName%></h4>
                                     </div>
+                                </a>
                                 </div> 
                                 <% }) %>
                             
@@ -226,17 +129,20 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                         <% itemsNewsHomePage.forEach((items)=>{%>
+                                            <a href="p/<%=items.id%>">
                                             <div class="col-lg-6 col-md-6">
+                                               
                                                 <div class="single-what-news mb-100">
                                                     <div class="what-img">
                                                         <img src="<%=folderThumb +items.thumb %>" style="width: 370px;height: 340px" alt="<%=items.userName %>">
                                                     </div>
                                                     <div class="what-cap">
                                                         <span class="color1"><%= items.category.name%></span>
-                                                        <h4><a href="#"><%=items.userName %></a></h4>
+                                                        <h4><%=items.userName %></h4>
                                                     </div>
                                                 </div>
                                             </div>   
+                                        </a>
                                        <% })  %>
                                        
                                     </div>
@@ -512,39 +418,46 @@
                     <div class="single-box">
                         <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="<%=itemSocial[0].link %>"><img src="./../../../frontend/assets/img/news/icon-fb.png" alt=""></a>
+                                <a href="<%=itemSocial[0].link %>"><img src="./../../../frontend/assets/img/news/icon-fb.png" alt="">
                             </div>
                             <div class="follow-count">  
                                 <span>8,045</span>
                                 <p><%=itemSocial[0].name %></p>
                             </div>
+                        </a>
                         </div> 
                         <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="<%=itemSocial[1].link %>"><img src="./../../../frontend/assets/img/news/icon-tw.png" alt=""></a>
+                                <a href="<%=itemSocial[1].link %>"><img src="./../../../frontend/assets/img/news/icon-tw.png" alt="">
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
                                 <p><%=itemSocial[1].name %></p>
                             </div>
+                        </a>
                         </div>
                             <div class="follow-us d-flex align-items-center">
                             <div class="follow-social">
-                                <a href="<%=itemSocial[2].link %>"><img src="./../../../frontend/assets/img/news/icon-ins.png" alt=""></a>
+                                <a href="<%=itemSocial[2].link %>">
+                                <img src="./../../../frontend/assets/img/news/icon-ins.png" alt="">
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
                                 <p><%=itemSocial[2].name %></p>
                             </div>
+                        </a>
                         </div>
                         <div class="follow-us d-flex align-items-center">
+                            
                             <div class="follow-social">
-                                <a href="<%=itemSocial[3].name %>"><img src="./../../../frontend/assets/img/news/icon-yo.png" alt=""></a>
+                                <a href="<%=itemSocial[3].link%>">
+                                <img src="./../../../frontend/assets/img/news/icon-yo.png" alt="">
                             </div>
                             <div class="follow-count">
                                 <span>8,045</span>
                                 <p><%=itemSocial[3].name %></p>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -575,14 +488,18 @@
                         <%itemsNew.forEach((items)=>{%>
                            
                                 <div class="weekly2-single">
+                                    <a href="p/<%=items.id%>">
                                     <div class="weekly2-img">
-                                        <img src="<%= folderThumb+ items.thumb%>" alt="">
+                                  
+                                        <img src="<%= folderThumb+ items.thumb%>" style="width: 100%;height: 174px;" alt="">
                                     </div>
                                     <div class="weekly2-caption">
                                         <span class="color1"><%=items.category.name %></span>
+                                        <p><%=items.userName %></p>
                                         <p><%=moment(items.crated.time).format("DD/MM/YYYY")%></p>
-                                        <h4><a href="#"><%=items.category.userName %></a></h4>
+                                        <h4><%=items.category.userName %></h4>
                                     </div>
+                                </a>
                                 </div> 
                            
                         <% }) %>
