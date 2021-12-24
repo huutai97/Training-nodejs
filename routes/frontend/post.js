@@ -7,10 +7,10 @@ const SocialItem = require('../../models/items'); // patch models
 const paramHelper = require('../../helper-publish/params');
 
 /* GET home admin page. */
-router.get('/:id', async function(req, res, next) { 
+router.get('/:slug', async function(req, res, next) { 
   let itemsRecentPost = [];
   let itemsCategory = []; 
-  let itemsDetail = paramHelper.getParam(req.params,'id','');
+  let itemsDetail = paramHelper.getParam(req.params,'slug','');
 
     await CategoryModel.listItemFrontend(null,{task:'list-category'}).then((items)=>{
       itemsCategory = items ; 

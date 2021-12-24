@@ -70,7 +70,7 @@
                     <div class="col-12">
                         <div class="weekly-news-active dot-style d-flex dot-style">
                             <% itemsNew.forEach((items)=>{ %>
-                                 <a href="p/<%=items.id%>">
+                                 <a href="p/<%=items.slug%>">
                                 <div class="weekly-single active">
                                    
                                     <div class="weekly-img">
@@ -129,7 +129,7 @@
                                 <div class="whats-news-caption">
                                     <div class="row">
                                         <% itemsNewsHomePage.forEach((items)=>{%>
-                                            <a href="p/<%=items.id%>">
+                                            <a href="p/<%=items.slug%>">
                                             <div class="col-lg-6 col-md-6">
                                                
                                                 <div class="single-what-news mb-100">
@@ -488,7 +488,7 @@
                         <%itemsNew.forEach((items)=>{%>
                            
                                 <div class="weekly2-single">
-                                    <a href="p/<%=items.id%>">
+                                    <a href="p/<%=items.slug%>">
                                     <div class="weekly2-img">
                                   
                                         <img src="<%= folderThumb+ items.thumb%>" style="width: 100%;height: 174px;" alt="">
