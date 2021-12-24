@@ -91,7 +91,7 @@ const pathAvatar = './../../../upload/thumb/';
               
                 <%- filterstatusHelper(collection,statusFilter,params.search) %>
 
-                <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal" style="float:right">Add New Items</a>
+                <a class="btn btn-info"  style="float:right"href="erp/article/form">Add New Items</a>
                 
 
               </div>  
@@ -134,7 +134,8 @@ const pathAvatar = './../../../upload/thumb/';
                            <%= item._id %>
                           </td>
                           <td>
-                            <%= item.userName %>
+                      
+                            <%-item.userName.substring(0,20)%>..
                           </td>
                           <td>
                             <%-ImgHelper(pathAvatar, item.thumb, item.userName) %>
@@ -181,52 +182,7 @@ const pathAvatar = './../../../upload/thumb/';
       </h2> -->
     </div>
 
-    <div class="container demo">
-     
-      <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                  <div class="modal-body"></div>
-                      <div class="nav flex-sm-column flex-row">
-                        <form action="/erp/article/save" method="POST" enctype="multipart/form-data">
-                          <label for="fname"class="text-primary">Tên người dùng </label>
-                        <input type="text" id="fname" class="modal-title" name="userName" value="<%=item.userName  %>"><br><br>
-                   
-                        <label for="lname"class="text-primary"style="padding: 22px;">Ordering</label>
-                        <input type="text" id="Ordering" name="ordering" class="form-group"value="<%=item.ordering  %>"><br><br>
-                   
-                        <select name="status" >
-                          <option value="novalue">Choose Status</option>
-                          <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
-                          <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
-                        </select>
- 
-                       <%- selectBoxHelper('category',categoryItems,item.category) %>
-                       <label for="formFileLg">Select file</label>
-                       <input class="form-control form-control-lg" id="formFileLg" name="thumb" type="file" />
-      
-                        <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
-                        <script>CKEDITOR.replace( 'editor' );</script>
-                        <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
-                        <input class="form-control" name="category_name" value="<%= item.category_name%>" type="hidden">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <input class="form-control" name="dfImg" value="<%= item.thumb %>" type="hidden">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      
-                      </form>
-                      </div>
-                  </div>
-                 
-              </div>
-              <% if(errorsSave){ %>
-
-                <% errorsSave.forEach((error)=>{ %>
-                  <li> <%= error.param %>: <%= error.msg %></li>
-                  <% })%>
-                  <%}%>
-              
-          </div>
-      </div>
+    
   </div>
  
 

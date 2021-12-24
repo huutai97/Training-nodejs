@@ -39,7 +39,6 @@ module.exports = {
             return itemModel
             .find({status: 'active'})
             .select('name slug')
-            .limit(4)
             .sort({_id:'desc'})
         }
     },
