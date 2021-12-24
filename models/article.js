@@ -5,7 +5,7 @@ module.exports = {
     listItems : (params,options = null )=>{
         let obj = {};
         if(params.currentStatus !=='all')   obj.status = params.currentStatus;
-        if(params.search !== '')  obj.name = new RegExp(params.search,'i');
+        if(params.search !== '')  obj.name = new RegExp(params.search,'d');
      
         return ArticleModel
         .find(params.obj)
@@ -52,8 +52,8 @@ module.exports = {
     countItem : (params,options = null)=>{
        return ArticleModel.countDocuments(params.obj);
     },
-    getItemPOST : (id,options = null)=>{
-        return ArticleModel.findById(id)
+    getItemPOST : (slug,options = null)=>{
+        return ArticleModel.findOne()
         .select('userName crated.user_name crated.time category.name thumb slug content')
     },
     changeStatus : (id,currentStatus = null)=>{
