@@ -1,6 +1,7 @@
 const ArticleModel = require('../schemas/article');
 const fs = require('fs');
 const FolderUpload = ('public/upload/thumb/');
+const session = require('express-session')
 module.exports = {
     listItems : (params,options = null )=>{
         let obj = {};
@@ -18,10 +19,11 @@ module.exports = {
     getItem : (id, options = null)=>{
        return ArticleModel.findById({_id:id});
     },
+   
     listItemFrontend : (params = null, options = null)=>{
         if(options.task == 'top-post'){
             return ArticleModel.find({status: 'active',trend:'active'})
-            .select('userName crated.user_name crated.time category.name thumb slug')
+            .select('userName crated.user_name crated.time category.name thumb slug countView')
             .limit(8)
             .sort({_id:'asc'})
         }
@@ -30,7 +32,7 @@ module.exports = {
             .find({status: 'active'})
             .select('userName crated.user_name crated.time category.name thumb slug')
             .limit(3)
-            .sort({_id:'desc'})
+            .sort({countView:'desc'})
         }
         if(options.task == 'list-items-in-category'){
             return ArticleModel
@@ -53,8 +55,9 @@ module.exports = {
        return ArticleModel.countDocuments(params.obj);
     },
     getItemPOST : (slug,options = null)=>{
-        return ArticleModel.findOne()
-        .select('userName crated.user_name crated.time category.name thumb slug content')
+
+        return ArticleModel.findOneAndUpdate({slug:slug},{$inc:{countView:1}})
+        .select('userName crated.user_name crated.time category.name thumb slug content countView')
     },
     changeStatus : (id,currentStatus = null)=>{
        
@@ -94,6 +97,8 @@ module.exports = {
         }
        return ArticleModel.updateOne({_id:   id});
      },
+    
+    
     deleteItem : async  (id,options = null)=>{
        
         await ArticleModel.findById({_id:id}).then((item)=>{
@@ -107,6 +112,8 @@ module.exports = {
         });
      return ArticleModel.deleteOne({_id:   id});
      },
+     
+    
      saveItem : (item,options = null)=>{
      
             if(options.task == "add"){
@@ -130,6 +137,7 @@ module.exports = {
                      trend: item.trend,
                      content:item.content,
                      thumb : item.thumb,
+                     countView:item.countView,
                      category:{
                         id: item.category,
                         name: item.category_name,

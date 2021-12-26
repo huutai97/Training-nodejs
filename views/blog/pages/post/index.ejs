@@ -54,7 +54,7 @@
                      </h2>
                      <ul class="blog-info-link mt-3 mb-4">
                         <li><a href="#"><i class="fa fa-user"></i>  <%=itemsDetail.category.name%></a></li>
-                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                        <li><a href="#"><i class="fa fa-eye"></i> lượt xem: <%=itemsDetail.countView%> </a></li>
                      </ul>
                      <p class="excert">
                         <%-itemsDetail.content%>
@@ -279,7 +279,7 @@
                   <aside class="single_sidebar_widget popular_post_widget">
                      <h3 class="widget_title">Recent Post</h3>
                      <%itemsRecentPost.forEach((items)=>{%>
-                        <a href="<%=items.id%>">
+                        <a href="<%=items.slug%>">
                         <div class="media post_item">   
                            <img src="<%=folderThumb+items.thumb %>" style="height: 100%;width: 80px;margin-bottom: 15px;border-radius: 5px;" alt="<%=items.thumb %>">
                            <div class="media-body">

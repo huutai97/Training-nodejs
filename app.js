@@ -5,15 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var app = express();
 var moment = require('moment');  
-
+var passport = require('passport')
 const mongoose = require('mongoose');
 const validator = require('express-validator');
 const systemConfig = require('./configs/system');
 const databaseConfig = require('./configs/database');
+const session = require('express-session');
 
 // Connect database MongoDatabase
 
-mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@erp.33ll6.mongodb.net/${databaseConfig.database}`,{useNewUrlParser: true ,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify: true});
+mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@erp.33ll6.mongodb.net/${databaseConfig.database}`,{useNewUrlParser: true ,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify: false});
 
 
 
@@ -43,9 +44,18 @@ app.locals.moment = moment;
 //set up router backend
 app.use(`/${systemConfig.admin}`, require('./routes/backend/index'));
 app.use(`/${systemConfig.blog}`, require('./routes/frontend/index'));
-
 //set up router frontend
 app.use('/', require('./routes/frontend/index'));
+
+app.use(cookieParser());
+app.use(session({
+    secret:'NguyenHuuTai',
+    resave:false,
+    saveUninitialized:true,
+}));
+//SET UP LOGIN
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
