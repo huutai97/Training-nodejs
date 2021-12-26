@@ -111,9 +111,7 @@ const pathAvatar = './../../../upload/users/';
                       <th>
                         Group
                       </th>
-                      <th>
-                        Ordering
-                      </th>
+                     
                       <th>
                         Status
                       </th>
@@ -146,10 +144,7 @@ const pathAvatar = './../../../upload/users/';
                             
                           </td>
                           
-                          <td>
-                            <input type="number" value="<%= item.ordering %>" ">
-                            
-                          </td>
+                          
                           <td>
                            <%-statusHelper(collection, item.status, item.id) %>
                           </td>
@@ -181,7 +176,7 @@ const pathAvatar = './../../../upload/users/';
           </div>
         </div>
       </div>
-      <h2 float="right"><%- JSON.stringify(item)%>
+      
     
       </h2>
     </div>
@@ -223,13 +218,6 @@ const pathAvatar = './../../../upload/users/';
                   </div>
                  
               </div>
-              <% if(errorsSave){ %>
-
-                <% errorsSave.forEach((error)=>{ %>
-                  <li> <%= error.param %>: <%= error.msg %></li>
-                  <% })%>
-                  <%}%>
-              
           </div>
       </div>
   </div>

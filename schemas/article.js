@@ -17,7 +17,12 @@ const schema = new mongoose.Schema
      category:{
          id: String,
          name: String,
+        
      },
+     countView:{
+        type: Number,
+        default:0
+    },
      content: String,
      slug: {type: String,  slug:  'userName', unique:   true},
      crated:{

@@ -14,4 +14,7 @@ router.use('/users', require('./users'));
 router.use('/category', require('./category'));
 /* GET article admin page. */
 router.use('/article', require('./article'));
+/* GET login admin page. */
+router.use('/auth', require('./auth'));
+
 module.exports = router;

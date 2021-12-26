@@ -9,11 +9,12 @@ mongoose.plugin(updateSlug);
 const schema = new mongoose.Schema
 ({
      userName: String,
+     passWord:String,
      status: String ,
      ordering:Number,
      group_acp:String,
      avatar:String,
-     group:{
+      group:{
          id: String,
          name: String,
      },
