@@ -10,19 +10,22 @@ const loginFail = 'erp/auth/login';
 const userLogin = require('./../../schemas/users');
 const usersModel = require('./../../models/users'); // patch models
 
+
  /* GET logout. */ 
  router.get('/logout', function (req, res, next) {
-  req.logout();
-  res.redirect('/');
+  req.user=null;
+  res.redirect('/erp/auth/login');
 });
 /* GET login erp. */ 
-router.get('/login', function (req, res, next) {
-    let itemLogin = {userName:'',passWord:''};
+router.get('/login' ,function (req, res, next) {
+   
+    let itemLogin = {username:'',password:''};
     let errors = null;
     res.render(`${folderView}login`,{itemLogin,errors}); 
 });
 
 router.post('/login', function (req, res, next) {
+ 
     req.body = JSON.parse(JSON.stringify(req.body));
     ValidateLogin.validator(req);
     let itemLogin = Object.assign(req.body);
@@ -31,10 +34,10 @@ router.post('/login', function (req, res, next) {
     if(errors){
         res.render(`${folderView}login`,{itemLogin,errors});
     }else{ 
-      console.log('local')
+     
       passport.authenticate('local', {
-      successRedirect: '/1',
-      failureRedirect: '/2' ,
+      successRedirect: '/erp',
+      failureRedirect: '/erp/auth/login' ,
       })(req, res, next);
      
     }
@@ -44,14 +47,36 @@ router.post('/login', function (req, res, next) {
 
 
 passport.use(new LocalStrategy(
-  function(userName, passWord, done) {
-    console.log(userName +"-" + passWord+"ok")
-    // userLogin.findOne({ userName: userName }, function (err, user) {
-    
-    // });
-    return done;
+  function(username, password, done) {
+    usersModel.getItemByuserName(username,null).then((users)=>{
+      let user = users[0];
+     if(!user){
+       console.log('user ko tồn tại');
+      return done(null,false);
+     }
+     else{
+       if(password !== user.password){
+        console.log('sai mật khẫu');
+         return done(null,false)
+       }
+       else{
+        console.log('Login ok');
+        return done(null,user)
+       }
+     }
+    });
   }
 ));
+passport.serializeUser(function(user, done) {
+ 
+  done(null, user.id);
+});
 
+passport.deserializeUser(function(user, done) {
+  usersModel.getItemByuserName(id,null).then(()=>{
+    done(null, user.id);
+  });
+ 
+});
 
 module.exports = router;

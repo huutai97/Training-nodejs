@@ -130,7 +130,7 @@ module.exports = {
               }
               if(options.task == "edit"){
                 return ArticleModel.updateOne({_id: item.id},{
-                     name:item.name,
+                     name:item.userName,
                      ordering:parseInt(item.ordering),
                      slug:item.slug,
                      status: item.status,

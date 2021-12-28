@@ -24,7 +24,7 @@ router.get('(/status/:status)?', async (req, res, next) =>{
     let errorsSave = req.validationErrors();
     let obj = {};
     let id   = paramHelper.getParam(req.params,    'id',    '');
-    let item = {userName: '',ordering:0,    status: 'novalue'}; // truyền giá trị để add item
+    let item = {username: '',ordering:0,    status: 'novalue'}; // truyền giá trị để add item
     params.search = paramHelper.getParam(req.query,    'search','');
     params.currentStatus = paramHelper.getParam(req.params,'status','all');
     let statusFilter =  await helperPublish.createFillterStatus(params.currentStatus,'users');
@@ -90,7 +90,7 @@ router.get('/change-groups-acp/:id/:group_acp', (req, res, next)=> {
 router.get('/form(/:id)?', async   (req, res, next)=> {
    
     let id   = paramHelper.getParam(req.params,    'id',    '');
-    let item = {userName: '',ordering:0,    status: 'novalue',group:'',group_name:''};
+    let item = {username: '',ordering:0,    status: 'novalue',group:'',group_name:''};
     let errors = null; 
     let groupsItems = [];
     await GroupsModel.find({},{_id:1,name:1}).then((items)=>{

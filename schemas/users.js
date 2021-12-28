@@ -8,8 +8,8 @@ mongoose.plugin(updateSlug);
 
 const schema = new mongoose.Schema
 ({
-     userName: String,
-     passWord:String,
+     username: String,
+     password:String,
      status: String ,
      ordering:Number,
      group_acp:String,
@@ -19,7 +19,7 @@ const schema = new mongoose.Schema
          name: String,
      },
      content: String,
-     slug: {type: String,  slug:  'userName', unique:   true},
+     slug: {type: String,  slug:  'username', unique:   true},
      crated:{
         user_id: Number,
         user_name : String,

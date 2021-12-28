@@ -15,9 +15,9 @@ const pathAvatar = './../../../upload/users/';
                 <form action="/erp/users/save" method="POST" enctype="multipart/form-data">
                   
                     <label for="fname"class="form-control">Tên người dùng </label>
-                  <input type="text" id="fname" class="form-control" name="userName" value="<%=item.userName  %>"><br><br>
+                  <input type="text" id="fname" class="form-control" name="username" value="<%=item.username  %>"><br><br>
                   <label for="fname"class="form-control">Mật khẫu</label>
-                  <input type="text" id="passWord" class="form-control" name="passWord" value="<%=item.passWord  %>"><br><br>
+                  <input type="text" id="passWord" class="form-control" name="password" value="<%=item.password  %>"><br><br>
                   <label for="fname"class="form-control">Slug</label>
                   <input type="text" id="slug" class="form-control" name="slug" value="<%=item.slug  %>"><br><br>
               
@@ -25,7 +25,7 @@ const pathAvatar = './../../../upload/users/';
                   <input type="text" id="Ordering"class="form-control" name="ordering" value="<%=item.ordering  %>"><br><br>
                   <%if(item.id !== undefined && item.id !== ''){%>
                     <label class="form-control"> Avatar</label>
-                    <%-ImgHelper(pathAvatar, item.avatar, item.userName) %>
+                    <%-ImgHelper(pathAvatar, item.avatar, item.username) %>
                   <%}%>
                   <select name="status"class="form-control" >
                     <option value="novalue">Choose Status</option>

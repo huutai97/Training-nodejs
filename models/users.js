@@ -8,7 +8,7 @@ module.exports = {
         return usersModel
         .find(params.obj)
         .sort({_id:'descending'})
-        .select('userName status odering crated content modified group.name avatar')
+        .select('username status odering crated content modified group.name avatar')
         .skip((params.paginaTion.currentPage-1)    *   params.paginaTion.totalperPage)
         .limit(params.paginaTion.totalperPage)
     },
@@ -57,10 +57,10 @@ module.exports = {
         });
      return usersModel.deleteOne({_id:   id});
      },
-     getItemByuserName : (userName,options = null)=>{
+     getItemByuserName : (username,options = null)=>{
          if(options == null){
-            return usersModel.find({status:'active',userName:userName})
-            .select('userName passWord avatar status group.name')
+            return usersModel.find({status:'active',username:username})
+            .select('username password avatar status group.name')
          }
         
      },
@@ -80,11 +80,11 @@ module.exports = {
               }
               if(options.task == "edit"){
                 return usersModel.updateOne({_id: item.id},{
-                     name:item.userName,
+                     name:item.username,
                      ordering:parseInt(item.ordering),
                      slug:item.slug,
                      status: item.status,
-                     passWord:item.passWord,
+                     password:item.password,
                      content:item.content,
                      avatar : item.avatar,
                      group:{
