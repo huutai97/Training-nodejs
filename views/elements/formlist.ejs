@@ -124,9 +124,9 @@ const collection = 'items';
                              <%-statusHelper('items', item.status, item.id) %>
                             </td>
                             <td class="text-primary">
-                             <a href="<%= systemConfig.admin %>/items/delete/<%=item.slug%>" type="button" class="btn btn-danger">Delete</a>
+                             <a href="<%= systemConfig.admin %>/items/delete/<%=item.id%>" type="button" class="btn btn-danger">Delete</a>
                             
-                             <a href="<%= systemConfig.admin %>/items/form/<%=item.slug%>" type="button" class="btn btn-info">Edit</a>
+                             <a href="<%= systemConfig.admin %>/items/form/<%=item.id%>" type="button" class="btn btn-info">Edit</a>
                              </a>
                             </td>
                             <td>
