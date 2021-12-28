@@ -7,5 +7,5 @@ module.exports = {
     users: 'users',
     category: 'category',
     article: 'article',
-
+    contact: 'contact',
 };
