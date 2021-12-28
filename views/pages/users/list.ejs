@@ -134,10 +134,10 @@ const pathAvatar = './../../../upload/users/';
                            <%= item._id %>
                           </td>
                           <td>
-                            <%= item.userName %>
+                            <%= item.username %>
                           </td>
                           <td>
-                            <%-ImgHelper(pathAvatar, item.avatar, item.userName) %>
+                            <%-ImgHelper(pathAvatar, item.avatar, item.username) %>
                           </td>
                           <td>
                             <%= item.group.name %>
@@ -190,7 +190,7 @@ const pathAvatar = './../../../upload/users/';
                       <div class="nav flex-sm-column flex-row">
                         <form action="/erp/users/save" method="POST" enctype="multipart/form-data">
                           <label for="fname"class="text-primary">Tên người dùng </label>
-                        <input type="text" id="fname" class="modal-title" name="userName" value="<%=item.userName  %>"><br><br>
+                        <input type="text" id="fname" class="modal-title" name="username" value="<%=item.username  %>"><br><br>
                    
                         <label for="lname"class="text-primary"style="padding: 22px;">Ordering</label>
                         <input type="text" id="Ordering" name="ordering" class="form-group"value="<%=item.ordering  %>"><br><br>

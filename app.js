@@ -50,12 +50,16 @@ app.use('/', require('./routes/frontend/index'));
 app.use(cookieParser());
 app.use(session({
     secret:'NguyenHuuTai',
-    resave:false,
+    resave:true,
     saveUninitialized:true,
+    cookie:{
+      maxAge: 5*60*1000
+    }
 }));
 //SET UP LOGIN
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 
 
