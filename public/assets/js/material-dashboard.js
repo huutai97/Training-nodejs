@@ -423,7 +423,7 @@ function debounce(func, wait, immediate) {
 
 // Custom delete js
 $('a.btn-danger').on('click', () =>{
-    if(!confirm("Mày muốn xóa hả...")) return false;
+    if(!confirm("Bạn có muốn xóa không ?")) return false;
 });
 
 CKEDITOR.replace( 'editor' );

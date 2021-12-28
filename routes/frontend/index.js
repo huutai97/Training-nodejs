@@ -8,4 +8,8 @@ router.use('/',require('./home'))
 router.use('/category',require('./category'))
 /* GET details page. */
 router.use('/p',require('./post'))
+/* GET contact page. */
+router.use('/contact',require('./contact'))
+/* GET about page. */
+router.use('/about',require('./about'))
 module.exports = router;
