@@ -31,7 +31,7 @@ module.exports = {
             return ArticleModel
             .find({status: 'active'})
             .select('userName crated.user_name crated.time category.name thumb slug')
-            .limit(3)
+            .limit(4)
             .sort({countView:'desc'})
         }
         if(options.task == 'list-items-in-category'){

@@ -18,7 +18,7 @@ router.get('/:slug', async function(req, res, next) {
   await ArticleModel.getItemPOST(itemsDetail,null).then((items)=>{
       itemsDetail = items ; 
     });
-    await ArticleModel.listItemFrontend(null,{task:'list-news-category-homepage'}).then((items)=>{
+    await ArticleModel.listItemFrontend(null,{task:'list-news'}).then((items)=>{
       itemsRecentPost = items ; 
     });
     res.render(`${folderView}index`,{

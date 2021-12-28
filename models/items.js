@@ -56,11 +56,9 @@ module.exports = {
               return new itemModel(item).save();
               }
               if(options.task == "edit"){
-              console.log(item.slug)
-
                 return itemModel.updateOne({_id: item.id},{
                      name:item.name, 
-                     slug:item.slug,
+               
                      status: item.status,
                      link:item.link,
                      modified: {
