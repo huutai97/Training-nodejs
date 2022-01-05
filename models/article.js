@@ -117,6 +117,7 @@ module.exports = {
      saveItem : (item,options = null)=>{
      
             if(options.task == "add"){
+                item.countView = 0;
                 item.crated = {
                     user_id: 0,
                     user_name : "AssMin",

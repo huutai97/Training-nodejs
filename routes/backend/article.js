@@ -73,11 +73,11 @@ router.get('/change-status/:id/:status', async (req, res, next)=> {
    
 });
 /*  change top_post item. */
-router.get('/change-special/:id/:trend', async (req, res, next)=> {
+router.get('/change-special/:id/:trend',  (req, res, next)=> {
     let currentTrend = paramHelper.getParam(req.params,    'trend',   'active');
     let id            = paramHelper.getParam(req.params,    'id',   '');
 
-    await ArticleModel.changeSpecial(id,currentTrend).then((result)=>{
+     ArticleModel.changeSpecial(id,currentTrend).then((result)=>{
         
         res.redirect(linkIndex);
     })
