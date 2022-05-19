@@ -18,5 +18,5 @@ router.use('/category', require('./category'));
 router.use('/article', require('./article'));
 /* GET contact admin page. */
 router.use('/contact', require('./contact'));
-
+router.use('/test', require('./test'));
 module.exports = router;
