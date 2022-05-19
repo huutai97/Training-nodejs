@@ -8,4 +8,5 @@ module.exports = {
     category: 'category',
     article: 'article',
     contact: 'contact',
+    test: 'test',
 };
